@@ -116,7 +116,7 @@ public class MovieDatabase {
 		movieList.put(name, movie);
 		
 		return movie;
-		
+				
 	}
 	
 	/**
@@ -161,16 +161,12 @@ public class MovieDatabase {
 				
 				ArrayList<Actor> coactorList = movie.getActorList();
 				
-				if (coactorList != null) {
-				
-					for (Actor coactor : coactorList) {
+				for (Actor coactor : coactorList) {
 						
-						if ((coactor != actor) && !resultList.contains(coactor)) {
-							resultList.add(coactor);
-						}
-						
+					if ((coactor != actor) && !resultList.contains(coactor)) {
+						resultList.add(coactor);
 					}
-					
+						
 				}
 				
 			}
