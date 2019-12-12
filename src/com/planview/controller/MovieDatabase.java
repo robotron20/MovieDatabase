@@ -14,9 +14,6 @@ public class MovieDatabase {
 	private HashMap<String, Actor> actorList = new HashMap<>();
 	private HashMap<String, Movie> movieList = new HashMap<>();
 	
-	private HashMap<Actor, ArrayList<Movie>> actorMovieList = new HashMap<>();
-	private HashMap<Movie, ArrayList<Actor>> movieActorList = new HashMap<>();
-	
 	public static void main(String[] args) {
 		
 		MovieDatabase movieDatabase = new MovieDatabase();
@@ -82,28 +79,10 @@ public class MovieDatabase {
 	 */
 	public void attach(Actor actor, Movie movie) {
 		
-		ArrayList<Movie> movieList = actorMovieList.get(actor);
-		
-		if (movieList == null) {
-			
-			movieList = new ArrayList<>();
-			
-			actorMovieList.put(actor, movieList);
-			
-		}
-		
+		ArrayList<Movie> movieList = actor.getMovieList();
 		movieList.add(movie);
 		
-		ArrayList<Actor> actorList = movieActorList.get(movie);
-		
-		if (actorList == null) {
-			
-			actorList = new ArrayList<>();
-			
-			movieActorList.put(movie, actorList);
-			
-		}
-		
+		ArrayList<Actor> actorList = movie.getActorList();
 		actorList.add(actor);
 		
 	}
@@ -153,7 +132,7 @@ public class MovieDatabase {
 		
 		if (actor != null) {
 		
-			ArrayList<Movie> movieList = actorMovieList.get(actor);
+			ArrayList<Movie> movieList = actor.getMovieList();
 			
 			return movieList;
 			
@@ -181,7 +160,7 @@ public class MovieDatabase {
 		
 			for (Movie movie : foundMovieList) {
 				
-				ArrayList<Actor> coactorList = movieActorList.get(movie);
+				ArrayList<Actor> coactorList = movie.getActorList();
 				
 				if (coactorList != null) {
 				
